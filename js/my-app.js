@@ -16,11 +16,15 @@ var app = new Framework7({
       url: 'pages/about.html',
     }, 
     
-    {    
+    {
       path: '/tambah_data_kamar/',
       url: 'pages/tambah_data_kamar.html',
     },
-      
+
+    {
+      path: '/tambah-data-kamar/',
+      componentUrl: 'pages/tambah-data-kamar.html'
+    }
   ],
   // ... other parameters
 });
