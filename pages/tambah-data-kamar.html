@@ -2,11 +2,48 @@
   <div class="page">
     <div class="navbar">
       <div class="navbar-inner">
-        <div class="title">{{title}}</div>
+        <div class="title">Tambah data kamar</div>
       </div>
     </div>
     <div class="page-content">
-      
+      <form>
+        <div class="list">
+          <ul>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <!-- "item-floating-label" class on item title -->
+                <div class="item-title item-floating-label">Name</div>
+                <div class="item-input-wrap">
+                  <input type="text" name="name">
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <!-- "item-floating-label" class on item title -->
+                <div class="item-title item-floating-label">Jenis Kelamin</div>
+                <div class="item-input-wrap">
+                  <input type="text" name="jenis_kelamin">
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <!-- "item-floating-label" class on item title -->
+                <div class="item-title item-floating-label">Kapasitas</div>
+                <div class="item-input-wrap">
+                  <input type="text" name="kapasitas">
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </form>
     </div>
   </div>
 </template>
@@ -30,6 +67,10 @@
       openAlert: function () {
         var self = this.$app.dialog.alert('Hello world!');
       },
+
+      rekamData: function() {
+        var app = this.$app.dialog.alert('Hello world!');
+      }
     },
     on: {
       pageInit: function () {
