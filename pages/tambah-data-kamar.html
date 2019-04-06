@@ -2,11 +2,16 @@
   <div class="page">
     <div class="navbar">
       <div class="navbar-inner">
+        <div class="left">
+          <a href="#" class="link icon-only back">
+            <i class="f7-icons">arrow_left</i>
+          </a>
+        </div>
         <div class="title">Tambah data kamar</div>
       </div>
     </div>
     <div class="page-content">
-      <form>
+      <form id="formDataKamar">
         <div class="list">
           <ul>
             <li class="item-content item-input">
@@ -23,9 +28,9 @@
             <li class="item-content item-input">
               <div class="item-inner">
                 <!-- "item-floating-label" class on item title -->
-                <div class="item-title item-floating-label">Jenis Kelamin</div>
+                <div class="item-title item-floating-label">Jenis Kamar</div>
                 <div class="item-input-wrap">
-                  <input type="text" name="jenis_kelamin">
+                  <input type="text" name="jenis_kamar">
                   <span class="input-clear-button"></span>
                 </div>
               </div>
@@ -44,6 +49,11 @@
           </ul>
         </div>
       </form>
+      <div class="block block-strong row">
+        <div class="row">
+          <button class="col button button-fill" @click="rekamData">Rekam</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -69,7 +79,11 @@
       },
 
       rekamData: function() {
-        var app = this.$app.dialog.alert('Hello world!');
+        var app = this.$app;
+        var data = app.form.convertToData('#formDataKamar');
+        app.request.post('php/rekam_data_kamar.php', data, function (resp) {
+          app.dialog.alert(resp);
+        });
       }
     },
     on: {
