@@ -16,18 +16,26 @@ if (isset($_POST)) {
             $stmt = $conn->prepare("INSERT INTO kamar SET namaKamar = :name, jenisKamar = :jenis_kamar, kapasitas = :kapasitas");
             $stmt->bindParam(':name', $data['name'], PDO::PARAM_STR);
             $stmt->bindParam(':jenis_kamar', $data['jenis_kamar'], PDO::PARAM_STR);
-            $stmt->bindParam(':kapasitas', $data['kapasitas'], PDO::PARAM_STR);
+            $stmt->bindParam(':kapasitas', $data['kapasitas'], PDO::PARAM_INT);
             $stmt->execute();
-            $response = 'Data Kamar berhasil disimpan';
 
             http_response_code(200);
+            $response['status'] = 200;
+            $response['message'] = 'OK';
+            $response['data'] = 'Data Kamar berhasil disimpan';
         } catch (PDOException $e) {
-            $response = $e->getMessage();
+            http_response_code(500);
+            $response['status'] = 500;
+            $response['message'] = 'NOT OK';
+            $response['data'] = $e->getMessage();
         }
     } else {
-        $response = 'Silahkan lengkapi form';
+        http_response_code(500);
+        $response['status'] = 500;
+        $response['message'] = 'NOT OK';
+        $response['data'] = 'Silahkan lengkapi form';
     }
 
-    echo json_encode($response);exit;
+    echo json_encode($response);
 }
 ?>

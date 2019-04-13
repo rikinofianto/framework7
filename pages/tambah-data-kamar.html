@@ -3,9 +3,7 @@
     <div class="navbar">
       <div class="navbar-inner">
         <div class="left">
-          <a href="#" class="link icon-only back">
-            <i class="f7-icons">arrow_left</i>
-          </a>
+          <a href="#" class="link icon-only panel-open"><i class="f7-icons">bars</i></a>
         </div>
         <div class="title">Tambah data kamar</div>
       </div>
@@ -15,33 +13,42 @@
         <div class="list">
           <ul>
             <li class="item-content item-input">
+              <div class="left">
+                <i class="f7-icons">abc_square</i>
+              </div>
               <div class="item-inner">
                 <!-- "item-floating-label" class on item title -->
                 <div class="item-title item-floating-label">Name</div>
                 <div class="item-input-wrap">
-                  <input type="text" name="name">
+                  <input type="text" name="name" id="name">
                   <span class="input-clear-button"></span>
                 </div>
               </div>
             </li>
 
             <li class="item-content item-input">
+              <div class="left">
+                <i class="f7-icons">favorites</i> 
+              </div>
               <div class="item-inner">
                 <!-- "item-floating-label" class on item title -->
                 <div class="item-title item-floating-label">Jenis Kamar</div>
                 <div class="item-input-wrap">
-                  <input type="text" name="jenis_kamar">
+                  <input type="text" name="jenis_kamar" id="jenis_kamar">
                   <span class="input-clear-button"></span>
                 </div>
               </div>
             </li>
 
             <li class="item-content item-input">
+              <div class="left">
+                <i class="f7-icons">numbers_square</i> 
+              </div>
               <div class="item-inner">
                 <!-- "item-floating-label" class on item title -->
                 <div class="item-title item-floating-label">Kapasitas</div>
                 <div class="item-input-wrap">
-                  <input type="text" name="kapasitas">
+                  <input type="text" name="kapasitas" id="kapasitas">
                   <span class="input-clear-button"></span>
                 </div>
               </div>
@@ -49,7 +56,7 @@
           </ul>
         </div>
       </form>
-      <div class="block block-strong row">
+      <div class="block row">
         <div class="row">
           <button class="col button button-fill" @click="rekamData">Rekam</button>
         </div>
@@ -81,9 +88,26 @@
       rekamData: function() {
         var app = this.$app;
         var data = app.form.convertToData('#formDataKamar');
+
         app.request.post('php/rekam_data_kamar.php', data, function (resp) {
-          app.dialog.alert(resp);
-        });
+          var response = JSON.parse(resp);
+          if (response.data) {
+            var formData = {
+              'name': '',
+              'jenis_kamar': '',
+              'kapasitas': '',
+            };
+            app.form.fillFromData('#formDataKamar', formData);
+            app.dialog.alert(response.data);
+          }
+        }, function (resp) {
+          var response = JSON.parse(resp.response);
+          if (response.data) {
+            app.dialog.alert(response.data);
+          }
+        }
+
+        );
       }
     },
     on: {

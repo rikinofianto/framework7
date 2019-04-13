@@ -21,11 +21,21 @@
     <div id="app">
 
         <div class="panel panel-left">
-            <div class="block">
-                <a href="/tambah-data-kamar/">Tambah Data Kamar</a><br/>
-                <a href="#">Terima Pasien</a><br/>
-                <a href="#">Tampilkan Pasien</a><br/>
-                <a href="/about/">Tentang</a>
+            <div class="list links-list">
+                <ul>
+                    <li>
+                        <a href="/tambah-data-kamar/">Tambah Data Kamar</a>
+                    </li>
+                    <li>
+                        <a href="#">Terima Pasien</a>
+                    </li>
+                    <li>
+                        <a href="#">Tampilkan Pasien</a>
+                    </li>
+                    <li>
+                        <a href="/about/">Tentang</a>
+                    </li>
+                </ul>
             </div>
         </div>
 
@@ -37,7 +47,7 @@
         <div class="statusbar"></div>
 
         <!-- Your main view, should have "view-main" class -->
-        <div class="view view-main">
+        <div class="view view-main safe-areas">
             <!-- Initial Page, "data-name" contains page name -->
             <div data-name="home" class="page">
 
@@ -51,6 +61,12 @@
                     </div>
                 </div>
             </div>
+            <!-- <div class="toolbar toolbar-bottom">
+              <div class="toolbar-inner">
+                <a href="#" class="link">Left Link</a>
+                <a href="#" class="link">Right Link</a>
+              </div>
+            </div> -->
         </div>
     </div>
     <!-- Path to Framework7 Library Bundle JS-->
