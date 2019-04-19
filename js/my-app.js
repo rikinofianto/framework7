@@ -19,6 +19,11 @@ var app = new Framework7({
     {
       path: '/tambah-data-kamar/',
       componentUrl: 'pages/tambah-data-kamar.html'
+    },
+
+    {
+      path: '/tampilkan-data-kamar/',
+      componentUrl: 'pages/tampilkan-data-kamar.html'
     }
   ],
   // ... other parameters
